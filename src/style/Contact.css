@@ -19,14 +19,15 @@ table {
 
 .contact-demo-wrapper {
   position: absolute;
-  width: 300px;
-  height: 300px;
+  min-width: 400px;
+  height: max-content;
   background: white no-repeat;
   border-radius: 5px;
   box-shadow: 7px 12px 11px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 7px 12px 11px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 7px 12px 11px 0px rgba(0, 0, 0, 0.75);
   text-align: left;
+  border-radius: 25px;
 }
 
 .contact-demo-list-wrapper {
@@ -37,4 +38,22 @@ table {
 }
 .contact-demo-list-wrapper > div {
   display: flex;
+}
+
+.row {
+  height: 50px;
+  line-height: 50px;
+  flex-wrap: nowrap;
+  border-radius: 25px;
+}
+.row:nth-child(odd) {
+  background-color: #f8dddd;
+}
+
+.row:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.col {
+  flex-wrap: nowrap;
 }

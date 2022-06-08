@@ -4,10 +4,9 @@ import './style/AddContact.css';
 
 const AddContact = ({ data, setData, setDisplayAddContactBox }) => {
 
-
     const [contact, setContact] = useState();
 
-    useEffect(() => console.log(contact), [contact])
+    // useEffect(() => console.log(contact), [contact])
 
     const setAddress = (e) => {
 
@@ -16,24 +15,41 @@ const AddContact = ({ data, setData, setDisplayAddContactBox }) => {
         let value = e.target.value;
 
 
-
         if (contact) {
 
             if (contact.address) {
 
                 let add = Object.assign({}, contact.address);
 
-                add[key] = value;
+                if (!(key === 'lat' || key === 'lng')) {
+                    add[key] = value;
 
-                setContact({ ...contact, 'address': { ...add } })
+                    setContact({ ...contact, 'address': { ...add } })
+                }
+                else {
+
+                    var temp = Object.assign({}, contact)
+
+                    temp.address.geo ? temp.address.geo[key] = value : temp.address = { ...temp.address, 'geo': { [key]: value } };
+
+                    setContact(temp)
+
+                }
 
             } else
+                if (!(key === 'lat' || key === 'lng'))
 
-                setContact({ ...contact, 'address': { [key]: value } })
+                    setContact({ ...contact, 'address': { [key]: value } })
+                else
+                    setContact({ ...contact, 'address': { 'geo': { [key]: value } } })
 
         }
         else
-            setContact({ ...contact, 'address': { [key]: value } })
+            if (!(key === 'lat' || key === 'lng'))
+
+                setContact({ ...contact, 'address': { [key]: value } })
+            else
+                setContact({ ...contact, 'address': { 'geo': { [key]: value } } })
 
 
     }
@@ -58,11 +74,10 @@ const AddContact = ({ data, setData, setDisplayAddContactBox }) => {
     }
 
     const saveDetails = () => {
-
         axios.post('https://jsonplaceholder.typicode.com/posts', contact)
             .then(res => {
-                console.log(res)
 
+                setData([...data, contact])
                 setDisplayAddContactBox(false)
             })
             .catch(e => console.log(e))
@@ -117,6 +132,8 @@ const AddContact = ({ data, setData, setDisplayAddContactBox }) => {
             </div>
 
             <button className="save-button" onClick={saveDetails} >Save</button>
+            <button className="save-button" onClick={() => setDisplayAddContactBox(false)} >Cancel</button>
+
         </div>
     )
 }

@@ -18,7 +18,7 @@ const ContactDemo = ({ selectedContact, screenX, screenY, setDisplaySelectedCont
 
             <div className="container">
                 <div className="row">
-                    <div className="col">Name:</div>       <div className="col">{selectedContact?.name}</div>
+                    <div className="col">Name:</div>       <div className="col"> <input type='text' value={selectedContact?.name} /> </div>
                 </div>
                 <div className="row">
                     <div className="col">Username:</div>   <div className="col">{selectedContact?.username}</div>
@@ -38,6 +38,22 @@ const ContactDemo = ({ selectedContact, screenX, screenY, setDisplaySelectedCont
                 <div className="row">
                     <div className="col">Zipcode:</div>    <div className="col">{selectedContact?.address.zipcode}</div>
                 </div>
+                <div className="row">
+                    <div className="col">phone:</div>    <div className="col">{selectedContact?.phone}</div>
+                </div>
+                <div className="row">
+                    <div className="col">Website:</div>    <div className="col">{selectedContact?.website}</div>
+                </div>
+                <div className="row">
+                    <div className="col">Company Name:</div>    <div className="col">{selectedContact?.company.name}</div>
+                </div>
+                <div className="row">
+                    <div className="col">Catch phrase:</div>    <div className="col">{selectedContact?.company.catchPhrase}</div>
+                </div>
+                <div className="row">
+                    <div className="col">bs:</div>    <div className="col">{selectedContact?.company.bs}</div>
+                </div>
+
             </div>
 
         </div>

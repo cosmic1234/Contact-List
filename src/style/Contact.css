@@ -3,10 +3,18 @@
   width: 50%;
 }
 
-table {
-  border: 1px dotted blue;
+.table-wrapper {
   height: 100%;
-  width: 100%;
+  display: flex;
+}
+
+table {
+  height: 100%;
+  width: 80%;
+}
+
+td {
+  padding-right: 10px;
 }
 
 .even-row {
@@ -19,7 +27,20 @@ table {
 
 .contact-demo-wrapper {
   position: absolute;
-  min-width: 400px;
+  min-width: 650px;
+  height: 400px;
+  background: white no-repeat;
+  border-radius: 5px;
+  box-shadow: 7px 12px 11px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 7px 12px 11px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 7px 12px 11px 0px rgba(0, 0, 0, 0.75);
+  text-align: left;
+  border-radius: 25px;
+  overflow: auto;
+}
+.add-contact-wrapper {
+  position: absolute;
+  min-width: 600px;
   height: max-content;
   background: white no-repeat;
   border-radius: 5px;

@@ -31,8 +31,28 @@ const Contacts = props => {
 
     const removeContact = (id) => {
 
+        axios.delete('https://jsonplaceholder.typicode.com/users/' + id)
+            .then(res => {
 
-        setData(data.filter(ele => ele.id !== id))
+                setData(data.filter(ele => ele.id !== id))
+
+            }).catch(e => console.log(e))
+    }
+
+    const updateContact = (updatedContact) => {
+
+        axios.put('https://jsonplaceholder.typicode.com/users/' + updatedContact.id, { updatedContact })
+            .then(res => {
+                setData(data.map(ele => {
+
+                    if (ele.id === updatedContact.id)
+                        return updatedContact
+
+
+                    return ele
+                }))
+            }).catch(e => console.log(e))
+
     }
 
     let timer = 0;
@@ -40,7 +60,7 @@ const Contacts = props => {
     return (
         <div className="contact-wrapper">
 
-            {displaySelectedContactBox && <ContactDemo selectedContact={selectedContact} screenX={screenX} screenY={screenY} setDisplaySelectedContactBox={setDisplaySelectedContactBox} />}
+            {displaySelectedContactBox && <ContactDemo selectedContact={selectedContact} updateContact={updateContact} screenX={screenX} screenY={screenY} setDisplaySelectedContactBox={setDisplaySelectedContactBox} />}
             <div className="table-wrapper">
                 <table >
 

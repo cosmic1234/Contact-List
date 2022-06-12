@@ -14,6 +14,7 @@ const Contacts = props => {
 
     useEffect(() => {
 
+        // read operation
         axios.get('https://jsonplaceholder.typicode.com/users')
             .then(res => setData(res.data))
             .catch(e => console.log(e))
@@ -31,6 +32,7 @@ const Contacts = props => {
 
     const removeContact = (id) => {
 
+        //delete operation
         axios.delete('https://jsonplaceholder.typicode.com/users/' + id)
             .then(res => {
 
@@ -41,6 +43,7 @@ const Contacts = props => {
 
     const updateContact = (updatedContact) => {
 
+        //update operation
         axios.put('https://jsonplaceholder.typicode.com/users/' + updatedContact.id, { updatedContact })
             .then(res => {
                 setData(data.map(ele => {

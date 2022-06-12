@@ -74,6 +74,8 @@ const AddContact = ({ data, setData, setDisplayAddContactBox }) => {
     }
 
     const saveDetails = () => {
+
+        //create operation
         axios.post('https://jsonplaceholder.typicode.com/users', contact)
             .then(res => {
 
